@@ -1,7 +1,7 @@
 * zig-abl_link
 
 =zig-abl_link= is a Zig interface to [[https://ableton.com][Ableton]]'s [[https://github.com/Ableton/link][Link]] library.
-=zig-abl_link= providse Zig types for Link primitives.
+=zig-abl_link= provides Zig types for Link primitives.
 
 To add this package to your project, pick a commit hash =<hash>= and run this:
 
