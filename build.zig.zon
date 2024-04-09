@@ -1,0 +1,16 @@
+.{
+    .name = "zig-abl_link",
+    .version = "3.1.1",
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+        "lib.zig",
+        "c.zig",
+    },
+    .dependencies = .{
+        .upstream = .{
+            .url = "https://github.com/Ableton/link/archive/a273b36ccaba106958f79e73643dfe5f8fbe6c67.tar.gz",
+            .hash = "1220ba319ad5eaecb6a2a4d41875efb1dca828f0429da2293619d9a5c2c408d7831d",
+        },
+    },
+}

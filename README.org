@@ -1,0 +1,38 @@
+* zig-abl_link
+
+=zig-abl_link= is a Zig interface to [[https://ableton.com][Ableton]]'s [[https://github.com/Ableton/link][Link]] library.
+=zig-abl_link= providse Zig types for Link primitives.
+
+To add this package to your project, pick a commit hash =<hash>= and run this:
+
+#+begin_src bash
+$ zig fetch --save https://github.com/ryleelyman/zig-abl_link/archive/<hash>.tar.gz
+#+end_src
+
+Then in your =build.zig= you can add this:
+
+#+begin_src zig
+const zig_link = b.dependency("zig-abl_link", .{
+    .target = target,
+    .optimize = optimize,
+});
+
+// For whatever you're building; in this case let's assume it's called exe.
+exe.root_module.addImport("ziglink", zig_link.module("zig-abl_link"));
+#+end_src
+
+and in your source code:
+
+#+begin_src zig
+// import
+const lk = @import("ziglink");
+
+// and use it something link this
+const link = lk.Link.create() orelse return error.Failed;
+defer link.destroy();
+const state = lk.SessionState.create() orelse return error.Failed;
+defer state.destroy();
+state.captureFromApplicationThread(link);
+defer state.commitFromApplicationThread(link);
+_ = state.isPlaying();
+#+end_src
