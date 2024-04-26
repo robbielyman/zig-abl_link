@@ -231,7 +231,7 @@ pub const SessionState = opaque {
     /// The tempo of the timeline in BPM
     /// This is a stable value that is appropriate for display to the user.
     /// Beat time progress will not necessarily match this tempo exactly because of clock drift compensation
-    fn tempo(self: *SessionState) f64 {
+    pub fn tempo(self: *SessionState) f64 {
         return c.abl_link_tempo(.{ .impl = self });
     }
 
