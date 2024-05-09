@@ -360,4 +360,4 @@ test "create and destroy" {
     state.commitFromApplicationThread(link);
 }
 
-const c = @import("c.zig");
+pub const c = @import("c.zig");
