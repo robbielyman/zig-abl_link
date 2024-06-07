@@ -7,13 +7,13 @@ pub fn build(b: *std.Build) !void {
     const module = b.addModule("zig-abl_link", .{
         .target = target,
         .optimize = optimize,
-        .root_source_file = .{ .path = "lib.zig" },
+        .root_source_file = b.path("lib.zig"),
     });
 
     const tests = b.addTest(.{
         .target = target,
         .optimize = optimize,
-        .root_source_file = .{ .path = "lib.zig" },
+        .root_source_file = b.path("lib.zig"),
     });
 
     const lib = try compileAblLink(b, target, optimize);
