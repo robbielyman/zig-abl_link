@@ -1,5 +1,6 @@
 .{
-    .name = "zig-abl_link",
+    .name = .abl_link,
+    .fingerprint = 0xb7d7f35633b0556c,
     .version = "3.1.1",
     .paths = .{
         "build.zig",
