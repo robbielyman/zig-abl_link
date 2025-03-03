@@ -1,7 +1,7 @@
 .{
     .name = .abl_link,
-    .fingerprint = 0x1260fc5e4838d415,
     .version = "3.1.1",
+    .fingerprint = 0xb7d7f3562f424e90, // Changing this has security and trust implications
     .paths = .{
         "build.zig",
         "build.zig.zon",
