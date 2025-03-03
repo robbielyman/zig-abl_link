@@ -39,9 +39,9 @@ fn compileAblLink(b: *std.Build, target: std.Build.ResolvedTarget, optimize: std
     const t = target.result.os.tag;
 
     switch (t) {
-        .macos => lib.defineCMacro("LINK_PLATFORM_MACOSX", "1"),
-        .linux => lib.defineCMacro("LINK_PLATFORM_LINUX", "1"),
-        .windows => lib.defineCMacro("LINK_PLATFORM_WINDOWS", "1"),
+        .macos => lib.root_module.addCMacro("LINK_PLATFORM_MACOSX", "1"),
+        .linux => lib.root_module.addCMacro("LINK_PLATFORM_LINUX", "1"),
+        .windows => lib.root_module.addCMacro("LINK_PLATFORM_WINDOWS", "1"),
         else => return error.NotSupported,
     }
 
