@@ -3,22 +3,22 @@
 =zig-abl_link= is a Zig interface to [[https://ableton.com][Ableton]]'s [[https://github.com/Ableton/link][Link]] library.
 =zig-abl_link= provides Zig types for Link primitives.
 
-To add this package to your project, pick a commit hash =<hash>= and run this:
+To add this package to your project, you can run this code:
 
 #+begin_src bash
-$ zig fetch --save https://github.com/ryleelyman/zig-abl_link/archive/<hash>.tar.gz
+$ zig fetch --save git+https://github.com/robbielyman/zig-abl_link
 #+end_src
 
 Then in your =build.zig= you can add this:
 
 #+begin_src zig
-const zig_link = b.dependency("zig-abl_link", .{
+const zig_link = b.dependency("abl_link", .{
     .target = target,
     .optimize = optimize,
 });
 
-// For whatever you're building; in this case let's assume it's called exe.
-exe.root_module.addImport("ziglink", zig_link.module("zig-abl_link"));
+// For whatever you're building; in this case let's assume its root module is `root_module`
+root_module.addImport("ziglink", zig_link.module("zig-abl_link"));
 #+end_src
 
 and in your source code:
@@ -36,3 +36,14 @@ state.captureFromApplicationThread(link);
 defer state.commitFromApplicationThread(link);
 _ = state.isPlaying();
 #+end_src
+
+** Dependencies
+
+To use =zig-abl_link=, you must have the ASIO library installed on your system
+and accessible for compilers to link against.
+On macOS, for example, you can accomplish this by running =brew install asio=.
+On Linux, consult your package manager.
+
+Building ASIO from source is out of scope for this particular package,
+but if you have a Zig package for doing so, please reach out;
+I'd love to make this library depend on yours.
